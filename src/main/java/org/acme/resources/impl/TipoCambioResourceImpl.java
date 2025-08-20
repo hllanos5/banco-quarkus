@@ -3,6 +3,8 @@ package org.acme.resources.impl;
 import jakarta.enterprise.context.ApplicationScoped;
 import lombok.AllArgsConstructor;
 import org.acme.dtos.TipoCambioDto;
+import org.acme.dtos.TipoCambioRequest;
+import org.acme.repository.TipoCambioRepository;
 import org.acme.resources.TipoCambioResource;
 import org.acme.services.TipoCambioService;
 
@@ -12,9 +14,10 @@ import org.acme.services.TipoCambioService;
 public class TipoCambioResourceImpl implements TipoCambioResource {
 
     private TipoCambioService tipoCambioService;
-
+    private TipoCambioRepository tipoCambioRepository;
     @Override
-    public TipoCambioDto getTipoCambio(String fecha) {
-        return tipoCambioService.getTipoCambio(fecha);
+    public TipoCambioDto getTipoCambio(TipoCambioRequest request) {
+
+        return tipoCambioService.getTipoCambio(request.getFecha());
     }
 }
