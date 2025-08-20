@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "c53fd99e-b9ec-4aab-a915-faa976ad19a4",
+		"name": "Quarkus-TipoCambio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11898375"
+	},
+	"item": [
+		{
+			"name": "consultarTipoCambio",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"today\",\r\n    \"dni\":\"72869352\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/tipo-cambio",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"tipo-cambio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listarConsultas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dni\": \"72869352\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/tipo-cambio/dni",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"tipo-cambio",
+						"dni"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
