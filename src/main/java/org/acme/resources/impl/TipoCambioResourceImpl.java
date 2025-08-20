@@ -10,8 +10,6 @@ import org.acme.entities.TipoCambio;
 import org.acme.resources.TipoCambioResource;
 import org.acme.services.TipoCambioService;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -28,16 +26,20 @@ public class TipoCambioResourceImpl implements TipoCambioResource {
         long contador = tipoCambioService.countByDniAndFecha(request.getDni(), request.getFechaCustom());
 
         if(contador<10){
+            TipoCambioDto tipoCambioDto = tipoCambioService.getTipoCambio(request.getFecha());
 
             TipoCambio data = new  TipoCambio();
             data.setFecha(request.getFechaCustom());
             data.setDni(request.getDni());
+            data.setSunat(tipoCambioDto.getSunat());
+            data.setCompra(tipoCambioDto.getCompra());
+            data.setVenta(tipoCambioDto.getVenta());
 
             tipoCambioService.registrar(data);
 
             response.setCodigo("001");
             response.setDescripcion("OK");
-            response.setTipoCambio(tipoCambioService.getTipoCambio(request.getFecha()));
+            response.setTipoCambio(tipoCambioDto);
 
         }
         else{
@@ -46,6 +48,11 @@ public class TipoCambioResourceImpl implements TipoCambioResource {
         }
         return response;
 
+    }
+
+    @Override
+    public List<TipoCambio> getListadoConsultaPorDni(TipoCambioRequest requestBody) {
+        return tipoCambioService.findAllTipoCambioPorDni(requestBody.getDni());
     }
 
 
